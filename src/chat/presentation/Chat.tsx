@@ -6,7 +6,8 @@ import {Bubble, GiftedChat, IMessage, Send} from 'react-native-gifted-chat';
 import styles from './style';
 
 import {useChat} from './useChat';
-import {Colors, icons} from '../../shared';
+import {icons} from '../../shared/assets';
+import {Colors} from '../../shared/theme';
 
 const Chat = () => {
   const {messages, initialize, onSend} = useChat();

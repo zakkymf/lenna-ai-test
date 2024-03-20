@@ -1,8 +1,8 @@
-import {Dialogflow_V2} from 'react-native-dialogflow';
-import {CONFIG} from '../../../env';
 import {useCallback, useState} from 'react';
 import {GiftedChat, IMessage} from 'react-native-gifted-chat';
-import {Bot, DEFAULT_CHAT} from '../../shared';
+import {Dialogflow_V2} from 'react-native-dialogflow';
+import {CONFIG} from '../../../env';
+import {Bot, DEFAULT_CHAT} from '../../shared/constant';
 
 export function useChat() {
   const [messages, setMessages] = useState<IMessage[]>(DEFAULT_CHAT);
@@ -33,14 +33,14 @@ export function useChat() {
     [messages],
   );
 
-  function initialize() {
+  const initialize = () => {
     Dialogflow_V2.setConfiguration(
       CONFIG.client_email,
       CONFIG.private_key,
       Dialogflow_V2.LANG_ENGLISH_US,
       CONFIG.project_id,
     );
-  }
+  };
 
   return {
     messages,
