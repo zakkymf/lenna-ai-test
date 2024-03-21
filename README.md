@@ -21,3 +21,9 @@ yarn ios // for running iOS
 - [react-native-dialogflow](https://github.com/innFactory/react-native-dialogflow)
 
 ## Demo
+
+| Android | iOS |
+| -------- | -------- |
+| ![](https://github.com/zakkymf/lenna-ai-test/blob/main/android.gif)    | ![](https://github.com/zakkymf/lenna-ai-test/blob/main/ios.gif)    |
+
+ 
