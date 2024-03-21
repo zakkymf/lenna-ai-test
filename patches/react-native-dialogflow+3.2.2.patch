@@ -1,0 +1,383 @@
+diff --git a/node_modules/react-native-dialogflow/android/build.gradle b/node_modules/react-native-dialogflow/android/build.gradle
+index d519e3d..c0f4c0d 100644
+--- a/node_modules/react-native-dialogflow/android/build.gradle
++++ b/node_modules/react-native-dialogflow/android/build.gradle
+@@ -22,12 +22,12 @@ buildscript {
+ 
+ 
+ android {
+-    compileSdkVersion 25
+-    buildToolsVersion "25.0.3"
++    compileSdkVersion 34
++    buildToolsVersion "34.0.0"
+ 
+     defaultConfig {
+-        minSdkVersion 16
+-        targetSdkVersion 22
++        minSdkVersion 21
++        targetSdkVersion 34
+         versionCode 1
+         versionName "1.0"
+     }
+@@ -37,16 +37,16 @@ android {
+     }
+ 
+     packagingOptions {
+-        exclude 'META-INF/DEPENDENCIES.txt'
++        exclude 'META-INF/DEPENDENCIES'
++        exclude 'META-INF/LICENSE'
+         exclude 'META-INF/LICENSE.txt'
+-        exclude 'META-INF/NOTICE.txt'
++        exclude 'META-INF/license.txt'
+         exclude 'META-INF/NOTICE'
+-        exclude 'META-INF/LICENSE'
+-        exclude 'META-INF/DEPENDENCIES'
++        exclude 'META-INF/NOTICE.txt'
+         exclude 'META-INF/notice.txt'
+-        exclude 'META-INF/license.txt'
+-        exclude 'META-INF/dependencies.txt'
+-        exclude 'META-INF/LGPL2.1'
++        exclude 'META-INF/ASL2.0'
++        exclude 'META-INF/services/javax.annotation.processing.Processor'
++        exclude 'META-INF/*.kotlin_module'
+     }
+ 
+ }
+@@ -55,13 +55,13 @@ android {
+ 
+ 
+ dependencies {
+-    compile "com.facebook.react:react-native:+"
+-    compile fileTree(dir: 'libs', include: ['*.jar'])
+-    compile 'com.android.support:appcompat-v7:23.2.1'
+-    compile 'ai.api:sdk:2.0.7@aar'
+-    compile 'com.google.code.gson:gson:2.3'
+-    compile 'commons-io:commons-io:2.4'
+-    compile('ai.api:libai:1.4.8') {
++    implementation "com.facebook.react:react-native:+"
++    implementation fileTree(dir: 'libs', include: ['*.jar'])
++    implementation 'com.android.support:appcompat-v7:23.2.1'
++    implementation 'ai.api:sdk:2.0.7@aar'
++    implementation 'com.google.code.gson:gson:2.3'
++    implementation 'commons-io:commons-io:2.4'
++    implementation('ai.api:libai:1.4.8') {
+        exclude module: 'log4j-core'
+     }
+ }
+diff --git a/node_modules/react-native-dialogflow/android/build/generated/source/buildConfig/debug/de/innfactory/apiai/BuildConfig.java b/node_modules/react-native-dialogflow/android/build/generated/source/buildConfig/debug/de/innfactory/apiai/BuildConfig.java
+new file mode 100644
+index 0000000..714324a
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/generated/source/buildConfig/debug/de/innfactory/apiai/BuildConfig.java
+@@ -0,0 +1,10 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package de.innfactory.apiai;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "de.innfactory.apiai";
++  public static final String BUILD_TYPE = "debug";
++}
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml b/node_modules/react-native-dialogflow/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..0c4b956
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="de.innfactory.apiai" >
++
++    <uses-sdk android:minSdkVersion="21" />
++
++    <uses-permission android:name="android.permission.RECORD_AUDIO" />
++    <uses-permission android:name="android.permission.INTERNET" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json b/node_modules/react-native-dialogflow/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json
+new file mode 100644
+index 0000000..738af14
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json
+@@ -0,0 +1,18 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "de.innfactory.apiai",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/aar_metadata/debug/aar-metadata.properties b/node_modules/react-native-dialogflow/android/build/intermediates/aar_metadata/debug/aar-metadata.properties
+new file mode 100644
+index 0000000..776557e
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/aar_metadata/debug/aar-metadata.properties
+@@ -0,0 +1,5 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
++minCompileSdk=1
++minCompileSdkExtension=0
++minAndroidGradlePluginVersion=1.0.0
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json b/node_modules/react-native-dialogflow/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compile_library_classes_jar/debug/classes.jar b/node_modules/react-native-dialogflow/android/build/intermediates/compile_library_classes_jar/debug/classes.jar
+new file mode 100644
+index 0000000..b3be193
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/compile_library_classes_jar/debug/classes.jar differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compile_r_class_jar/debug/R.jar b/node_modules/react-native-dialogflow/android/build/intermediates/compile_r_class_jar/debug/R.jar
+new file mode 100644
+index 0000000..a7d25ac
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/compile_r_class_jar/debug/R.jar differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compile_symbol_list/debug/R.txt b/node_modules/react-native-dialogflow/android/build/intermediates/compile_symbol_list/debug/R.txt
+new file mode 100644
+index 0000000..66a3e5a
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/compile_symbol_list/debug/R.txt
+@@ -0,0 +1,3 @@
++int mipmap ic_launcher 0x0
++int string app_name 0x0
++int style AppTheme 0x0
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-hdpi-v4_ic_launcher.png.flat b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-hdpi-v4_ic_launcher.png.flat
+new file mode 100644
+index 0000000..f244979
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-hdpi-v4_ic_launcher.png.flat differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-mdpi-v4_ic_launcher.png.flat b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-mdpi-v4_ic_launcher.png.flat
+new file mode 100644
+index 0000000..a49f77b
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-mdpi-v4_ic_launcher.png.flat differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-xhdpi-v4_ic_launcher.png.flat b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-xhdpi-v4_ic_launcher.png.flat
+new file mode 100644
+index 0000000..919284e
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-xhdpi-v4_ic_launcher.png.flat differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-xxhdpi-v4_ic_launcher.png.flat b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-xxhdpi-v4_ic_launcher.png.flat
+new file mode 100644
+index 0000000..68c18fa
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/compiled_local_resources/debug/out/mipmap-xxhdpi-v4_ic_launcher.png.flat differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties b/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..e3854db
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1,5 @@
++#Thu Mar 21 17:34:27 WIB 2024
++de.innfactory.apiai.react-native-dialogflow-main-6\:/mipmap-xxhdpi/ic_launcher.png=/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xxhdpi-v4/ic_launcher.png
++de.innfactory.apiai.react-native-dialogflow-main-6\:/mipmap-xhdpi/ic_launcher.png=/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xhdpi-v4/ic_launcher.png
++de.innfactory.apiai.react-native-dialogflow-main-6\:/mipmap-mdpi/ic_launcher.png=/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-mdpi-v4/ic_launcher.png
++de.innfactory.apiai.react-native-dialogflow-main-6\:/mipmap-hdpi/ic_launcher.png=/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-hdpi-v4/ic_launcher.png
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values/values.xml b/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values/values.xml
+new file mode 100644
+index 0000000..b38fb4f
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values/values.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="app_name">reactNativeApiAi</string>
++    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
++        
++    </style>
++</resources>
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml b/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..9698dc3
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res"><file name="ic_launcher" path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res/mipmap-mdpi/ic_launcher.png" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher" path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res/mipmap-hdpi/ic_launcher.png" qualifiers="hdpi-v4" type="mipmap"/><file name="ic_launcher" path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res/mipmap-xxhdpi/ic_launcher.png" qualifiers="xxhdpi-v4" type="mipmap"/><file path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
++        
++    </style></file><file path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">reactNativeApiAi</string></file><file name="ic_launcher" path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/res/mipmap-xhdpi/ic_launcher.png" qualifiers="xhdpi-v4" type="mipmap"/></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/build/generated/res/resValues/debug"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/BuildConfig.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/BuildConfig.class
+new file mode 100644
+index 0000000..d9ee7f4
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/BuildConfig.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$1.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$1.class
+new file mode 100644
+index 0000000..9f816bc
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$1.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$2.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$2.class
+new file mode 100644
+index 0000000..76a57ce
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$2.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$3.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$3.class
+new file mode 100644
+index 0000000..dd2b0b8
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$3.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$4.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$4.class
+new file mode 100644
+index 0000000..43003f8
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$4.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$5.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$5.class
+new file mode 100644
+index 0000000..9a381f0
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$5.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$6.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$6.class
+new file mode 100644
+index 0000000..4d23236
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$6.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$7.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$7.class
+new file mode 100644
+index 0000000..85d41e1
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule$7.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule.class
+new file mode 100644
+index 0000000..67d6172
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiModule.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiPackage.class b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiPackage.class
+new file mode 100644
+index 0000000..3538a0f
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/javac/debug/classes/de/innfactory/apiai/RNApiAiPackage.class differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/local_only_symbol_list/debug/R-def.txt b/node_modules/react-native-dialogflow/android/build/intermediates/local_only_symbol_list/debug/R-def.txt
+new file mode 100644
+index 0000000..3017bfa
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/local_only_symbol_list/debug/R-def.txt
+@@ -0,0 +1,5 @@
++R_DEF: Internal format may change without notice
++local
++mipmap ic_launcher
++string app_name
++style AppTheme
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt b/node_modules/react-native-dialogflow/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..7acb65e
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,14 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="de.innfactory.apiai" >
++4
++5    <uses-sdk android:minSdkVersion="21" />
++6
++7    <uses-permission android:name="android.permission.RECORD_AUDIO" />
++7-->/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:4:5-71
++7-->/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:4:22-68
++8    <uses-permission android:name="android.permission.INTERNET" />
++8-->/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:5:5-67
++8-->/Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:5:22-64
++9
++10</manifest>
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml b/node_modules/react-native-dialogflow/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml
+new file mode 100644
+index 0000000..0c4b956
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="de.innfactory.apiai" >
++
++    <uses-sdk android:minSdkVersion="21" />
++
++    <uses-permission android:name="android.permission.RECORD_AUDIO" />
++    <uses-permission android:name="android.permission.INTERNET" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/navigation_json/debug/navigation.json b/node_modules/react-native-dialogflow/android/build/intermediates/navigation_json/debug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/navigation_json/debug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-hdpi-v4/ic_launcher.png b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-hdpi-v4/ic_launcher.png
+new file mode 100644
+index 0000000..cde69bc
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-hdpi-v4/ic_launcher.png differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-mdpi-v4/ic_launcher.png b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-mdpi-v4/ic_launcher.png
+new file mode 100644
+index 0000000..c133a0c
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-mdpi-v4/ic_launcher.png differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xhdpi-v4/ic_launcher.png b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xhdpi-v4/ic_launcher.png
+new file mode 100644
+index 0000000..bfa42f0
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xhdpi-v4/ic_launcher.png differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xxhdpi-v4/ic_launcher.png b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xxhdpi-v4/ic_launcher.png
+new file mode 100644
+index 0000000..324e72c
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/mipmap-xxhdpi-v4/ic_launcher.png differ
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/values/values.xml b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/values/values.xml
+new file mode 100644
+index 0000000..b38fb4f
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/packaged_res/debug/values/values.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="app_name">reactNativeApiAi</string>
++    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
++        
++    </style>
++</resources>
+\ No newline at end of file
+diff --git a/node_modules/react-native-dialogflow/android/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt b/node_modules/react-native-dialogflow/android/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt
+new file mode 100644
+index 0000000..b1dad73
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt
+@@ -0,0 +1,4 @@
++de.innfactory.apiai
++mipmap ic_launcher
++string app_name
++style AppTheme
+diff --git a/node_modules/react-native-dialogflow/android/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/react-native-dialogflow/android/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..9b63a35
+--- /dev/null
++++ b/node_modules/react-native-dialogflow/android/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,25 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:1:1-7:12
++INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:1:1-7:12
++	package
++		ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:2:5-34
++		INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml
++	xmlns:android
++		ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:1:11-69
++uses-permission#android.permission.RECORD_AUDIO
++ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:4:5-71
++	android:name
++		ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:4:22-68
++uses-permission#android.permission.INTERNET
++ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:5:5-67
++	android:name
++		ADDED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml:5:22-64
++uses-sdk
++INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml
++INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from /Users/zakkymuhammadfajar/Documents/Workspace/Test/lennaAI/node_modules/react-native-dialogflow/android/src/main/AndroidManifest.xml
+diff --git a/node_modules/react-native-dialogflow/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin b/node_modules/react-native-dialogflow/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
+new file mode 100644
+index 0000000..07baef9
+Binary files /dev/null and b/node_modules/react-native-dialogflow/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin differ
